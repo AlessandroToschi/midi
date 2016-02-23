@@ -7,24 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260D985C1C63B1EC0059C683 /* piano.mid in CopyFiles */ = {isa = PBXBuildFile; fileRef = 260D985B1C63B1E60059C683 /* piano.mid */; };
+		2633ADE31C70E6DC0020DA63 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2633ADE21C70E6DC0020DA63 /* AudioToolbox.framework */; };
 		26593E5A1C5A9C4E00A1FBCF /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 26593E591C5A9C4E00A1FBCF /* main.c */; };
+		265BD8BE1C6CA42000A06EFC /* imperial2.mid in CopyFiles */ = {isa = PBXBuildFile; fileRef = 265BD8BD1C6CA41100A06EFC /* imperial2.mid */; };
+		268F749D1C5D38DF00F76AB4 /* imperial.mid in CopyFiles */ = {isa = PBXBuildFile; fileRef = 268F749C1C5D38D800F76AB4 /* imperial.mid */; };
+		26AB971E1C6FB78100052430 /* midi_reader.c in Sources */ = {isa = PBXBuildFile; fileRef = 26AB971D1C6FB78100052430 /* midi_reader.c */; settings = {ASSET_TAGS = (); }; };
+		26B45A331C7C7A30001B0018 /* star_wars.mid in CopyFiles */ = {isa = PBXBuildFile; fileRef = 26B45A321C7C7A24001B0018 /* star_wars.mid */; };
+		26B45A351C7CDE75001B0018 /* star_wars2.mid in CopyFiles */ = {isa = PBXBuildFile; fileRef = 26B45A341C7CDE69001B0018 /* star_wars2.mid */; };
+		26B45A371C7CE09E001B0018 /* star_wars3.mid in CopyFiles */ = {isa = PBXBuildFile; fileRef = 26B45A361C7CE09A001B0018 /* star_wars3.mid */; };
+		26C93B151C70810400057AAB /* midi_player.c in Sources */ = {isa = PBXBuildFile; fileRef = 26C93B141C70810400057AAB /* midi_player.c */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		26593E541C5A9C4E00A1FBCF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				268F749D1C5D38DF00F76AB4 /* imperial.mid in CopyFiles */,
+				265BD8BE1C6CA42000A06EFC /* imperial2.mid in CopyFiles */,
+				26B45A331C7C7A30001B0018 /* star_wars.mid in CopyFiles */,
+				26B45A371C7CE09E001B0018 /* star_wars3.mid in CopyFiles */,
+				26B45A351C7CDE75001B0018 /* star_wars2.mid in CopyFiles */,
+				260D985C1C63B1EC0059C683 /* piano.mid in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		260D985B1C63B1E60059C683 /* piano.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = piano.mid; sourceTree = "<group>"; };
+		2633ADE21C70E6DC0020DA63 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		26593E561C5A9C4E00A1FBCF /* midi */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = midi; sourceTree = BUILT_PRODUCTS_DIR; };
 		26593E591C5A9C4E00A1FBCF /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		265BD8BD1C6CA41100A06EFC /* imperial2.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = imperial2.mid; sourceTree = "<group>"; };
+		265BD8BF1C6CA57600A06EFC /* midi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = midi.h; sourceTree = "<group>"; };
+		268F749C1C5D38D800F76AB4 /* imperial.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = imperial.mid; sourceTree = "<group>"; };
+		26AB971D1C6FB78100052430 /* midi_reader.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = midi_reader.c; sourceTree = "<group>"; };
+		26B45A321C7C7A24001B0018 /* star_wars.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = star_wars.mid; sourceTree = "<group>"; };
+		26B45A341C7CDE69001B0018 /* star_wars2.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = star_wars2.mid; sourceTree = "<group>"; };
+		26B45A361C7CE09A001B0018 /* star_wars3.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = star_wars3.mid; sourceTree = "<group>"; };
+		26C93B141C70810400057AAB /* midi_player.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = midi_player.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2633ADE31C70E6DC0020DA63 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,7 +83,17 @@
 		26593E581C5A9C4E00A1FBCF /* midi */ = {
 			isa = PBXGroup;
 			children = (
+				2633ADE21C70E6DC0020DA63 /* AudioToolbox.framework */,
+				268F749C1C5D38D800F76AB4 /* imperial.mid */,
+				265BD8BD1C6CA41100A06EFC /* imperial2.mid */,
 				26593E591C5A9C4E00A1FBCF /* main.c */,
+				26C93B141C70810400057AAB /* midi_player.c */,
+				26AB971D1C6FB78100052430 /* midi_reader.c */,
+				265BD8BF1C6CA57600A06EFC /* midi.h */,
+				260D985B1C63B1E60059C683 /* piano.mid */,
+				26B45A341C7CDE69001B0018 /* star_wars2.mid */,
+				26B45A361C7CE09A001B0018 /* star_wars3.mid */,
+				26B45A321C7C7A24001B0018 /* star_wars.mid */,
 			);
 			path = midi;
 			sourceTree = "<group>";
@@ -119,6 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				26593E5A1C5A9C4E00A1FBCF /* main.c in Sources */,
+				26AB971E1C6FB78100052430 /* midi_reader.c in Sources */,
+				26C93B151C70810400057AAB /* midi_player.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +243,7 @@
 		26593E5E1C5A9C4E00A1FBCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_CFLAGS = "-DDEBUG=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -212,6 +251,7 @@
 		26593E5F1C5A9C4E00A1FBCF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -235,6 +275,7 @@
 				26593E5F1C5A9C4E00A1FBCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

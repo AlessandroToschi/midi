@@ -75,7 +75,7 @@ midi_header *read_header(FILE *midi_file)
     // Leggo i primi 4 byte del file, relativi al chunk type.
     fread(chunk_type, sizeof(char), 4, midi_file);
     chunk_type[4] = '\0'; // Terminatore per la stringa.
-    printf("chunk type: %s\n", chunk_type);
+    //printf("chunk type: %s\n", chunk_type);
     
     // Se i primi 4 byte (ASCII) sono diversi da 'MThd' non è un file midi.
     if(strcmp(chunk_type, MIDI_HEADER_CHUNK_TYPE))
@@ -104,17 +104,17 @@ midi_header *read_header(FILE *midi_file)
     {
         case MIDI_HEADER_FORMAT_SINGLE_TRACK:
         {
-            printf("midi format: single track\n");
+            //printf("midi format: single track\n");
             break;
         }
         case MIDI_HEADER_FORMAT_MULTI_TRACK:
         {
-            printf("midi format: multi track\n");
+            //printf("midi format: multi track\n");
             break;
         }
         case MIDI_HEADER_FORMAT_MULTI_TRACK_INDIPENDENT:
         {
-            printf("midi format: multi track indipendent\n");
+            //printf("midi format: multi track indipendent\n");
             break;
         }
         default:
@@ -134,18 +134,6 @@ midi_header *read_header(FILE *midi_file)
     // Leggo 2 byte dal file, relativi al tipo di suddivisione temporale dei delta.
     fread(&short_buffer, sizeof(unsigned char), 2, midi_file);
     division = buffert_to_shor(short_buffer); // Converto il buffer a mezzo intero senza segno.
-    
-    // Stampo la descrizione human-readable del tipo di suddivisione temporale dei delta.
-    if(division & 0x8000)
-    {
-        printf("midi header division smpte\n");
-    }
-    else
-    {
-        // Numero di tick per quarto di note.
-        unsigned short ticks_per_qn = division & 0x7F;
-        printf("midi header ticks per quarter-note: %u\n", ticks_per_qn);
-    }
     
     // Riempo la struct midi_header_struct con i valori letti.
     header->format = format;
@@ -188,7 +176,7 @@ void read_meta_event(FILE *midi_file, unsigned int delta, midi_event_list *track
         
         add_midi_event_list(track, tempo_event);
         
-        printf("delta: %u tempo: %u\n",delta, tempo);
+        //printf("delta: %u tempo: %u\n",delta, tempo);
     }
     else if (type == MIDI_MTRK_META_EVENT_TIME_SIGNATURE)
     {
@@ -205,10 +193,15 @@ void read_meta_event(FILE *midi_file, unsigned int delta, midi_event_list *track
         
         add_midi_event_list(track, time_signature_event);
         
-        printf("delta: %u num: %u, den: %u\n",delta, time_signature_event->time_signature.numerator, time_signature_event->time_signature.denominator);
+        //printf("delta: %u num: %u, den: %u\n",delta, time_signature_event->time_signature.numerator, time_signature_event->time_signature.denominator);
     }
     else
     {
+        midi_event *meta_event = alloc_midi_event();
+        meta_event->delta = delta;
+        
+        add_midi_event_list(track, meta_event);
+        
         // Gli altri meta event non interessano saltiamo al successivo evento.
         fseek(midi_file, length, SEEK_CUR);
     }
@@ -251,7 +244,7 @@ void read_midi_event(FILE *midi_file, char event, unsigned int delta, struct mid
         
         add_midi_event_list(midi_track_events, note_off_event);
         
-        printf("delta: %u, midi event: note off; key note: %u, velocity: %u, channel: %u\n", delta, key_note, velocity, channel);
+        //printf("delta: %u, midi event: note off; key note: %u, velocity: %u, channel: %u\n", delta, key_note, velocity, channel);
     }
     else if(type == MIDI_MTRK_MIDI_EVENT_NOTE_ON || type == MIDI_MTRK_MIDI_EVENT_POLYPHONIC_KEY_PRESSURE)
     {
@@ -269,14 +262,24 @@ void read_midi_event(FILE *midi_file, char event, unsigned int delta, struct mid
         
         add_midi_event_list(midi_track_events, note_on_event);
         
-        printf("delta: %u, midi note on; key note: %d, velocity: %d, channel: %d\n", delta, key_note, velocity, channel);
+        //printf("delta: %u, midi note on; key note: %d, velocity: %d, channel: %d\n", delta, key_note, velocity, channel);
     }
     else if(type == MIDI_MTRK_MIDI_EVENT_CONTROL_CHANGE || type == MIDI_MTRK_MIDI_EVENT_PITCH_WHEEL_CHANGE)
     {
+        midi_event *mid_event = alloc_midi_event();
+        mid_event->delta = delta;
+        
+        add_midi_event_list(midi_track_events, mid_event);
+        
         fseek(midi_file, 2, SEEK_CUR);
     }
     else if(type == MIDI_MTRK_MIDI_EVENT_PROGRAM_CHANGE || type == MIDI_MTRK_MIDI_EVENT_CHANNEL_PRESSURE)
     {
+        midi_event *mid_event = alloc_midi_event();
+        mid_event->delta = delta;
+        
+        add_midi_event_list(midi_track_events, mid_event);
+        
         fseek(midi_file, 1, SEEK_CUR);
     }
     else
@@ -338,7 +341,7 @@ midi_event_list *read_track(FILE *midi_file)
     
     fread(chunk_type, sizeof(char), 4, midi_file);
     chunk_type[4] = '\0';
-    printf("chunk type: %s\n", chunk_type);
+    //printf("chunk type: %s\n", chunk_type);
     
     if(strcmp(chunk_type, MIDI_MTRK_CHUNK_TYPE))
     {
